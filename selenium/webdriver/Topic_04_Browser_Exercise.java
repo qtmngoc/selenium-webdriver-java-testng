@@ -8,6 +8,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class Topic_04_Browser_Exercise {
@@ -22,13 +23,15 @@ public class Topic_04_Browser_Exercise {
 		driver.manage().window().maximize();
 	}
 
-	@Test
-	public void TC_01_Url() {
+	@BeforeMethod
+	public void beforeMethod() {
 		driver.get("http://live.techpanda.org/");
-		
 		// Click My Account in the footer
 		driver.findElement(By.xpath("//div[@class='footer']//a[@title='My Account']")).click();
-		
+	}
+	
+	@Test
+	public void TC_01_Url() {
 		String loginPageUrl = driver.getCurrentUrl();
 		Assert.assertEquals(loginPageUrl, "http://live.techpanda.org/index.php/customer/account/login/");
 		
@@ -41,11 +44,6 @@ public class Topic_04_Browser_Exercise {
 
 	@Test
 	public void TC_02_Title() {
-		driver.get("http://live.techpanda.org/");
-		
-		// Click My Account in the footer
-		driver.findElement(By.xpath("//div[@class='footer']//a[@title='My Account']")).click();
-		
 		String loginPageTitle = driver.getTitle();
 		Assert.assertEquals(loginPageTitle, "Customer Login");
 		
@@ -58,10 +56,6 @@ public class Topic_04_Browser_Exercise {
 	
 	@Test
 	public void TC_03_Navigation() {
-		driver.get("http://live.techpanda.org/");
-		
-		driver.findElement(By.xpath("//div[@class='footer']//a[@title='My Account']")).click();
-	
 		driver.findElement(By.xpath("//a[@title='Create an Account']")).click();
 		
 		Assert.assertEquals(driver.getCurrentUrl(), "http://live.techpanda.org/index.php/customer/account/create/");
@@ -81,10 +75,6 @@ public class Topic_04_Browser_Exercise {
 	
 	@Test
 	public void TC_04_Page_Source() {
-		driver.get("http://live.techpanda.org/");
-		
-		driver.findElement(By.xpath("//div[@class='footer']//a[@title='My Account']")).click();
-		
 		Assert.assertTrue(driver.getPageSource().contains("Login or Create an Account"));
 		
 		driver.findElement(By.xpath("//a[@title='Create an Account']")).click();
