@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" parallel="false">
+
+	<listeners>
+		<listener class-name="testNG.Topic_14_Listener" />
+	</listeners>
+
+	<test name="Run on Chrome">
+		<classes>
+			<class name="testNG.Topic_13_Test_Dependencies" />
+		</classes>
+	</test>
+
+</suite> 

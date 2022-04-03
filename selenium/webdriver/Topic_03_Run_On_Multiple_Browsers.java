@@ -14,10 +14,10 @@ public class Topic_03_Run_On_Multiple_Browsers {
 	public void TC_01_Firefox() {
 		// Executable File: geckodriver/ chromedriver/ edgedriver/ IEDriver/...
 		System.setProperty("webdriver.gecko.driver", projectPath + "\\browserDrivers\\geckodriver.exe");
-		
+
 		// Class: FirefoxDriver/ ChromeDriver/ EgdeDriver/ SafariDriver/...
 		driver = new FirefoxDriver();
-		
+
 		driver.get("https://www.facebook.com/");
 		driver.quit();
 	}
@@ -26,18 +26,18 @@ public class Topic_03_Run_On_Multiple_Browsers {
 	public void TC_02_Chrome() {
 		System.setProperty("webdriver.chrome.driver", projectPath + "\\browserDrivers\\chromedriver.exe");
 		driver = new ChromeDriver();
-		
+
 		driver.get("https://www.facebook.com/");
 		driver.quit();
 	}
-	
+
 	@Test
 	public void TC_03_Edge() {
 		System.setProperty("webdriver.edge.driver", projectPath + "\\browserDrivers\\msedgedriver.exe");
 		driver = new EdgeDriver();
-		
+
 		driver.get("https://www.facebook.com/");
 		driver.quit();
 	}
-	
+
 }

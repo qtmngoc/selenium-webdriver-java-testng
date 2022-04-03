@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Suite" parallel="false">
+	<parameter name = "url" value = "http://live.techpanda.org/index.php/customer/account/login/" />
+
+	<test name="Optional">
+ 		<classes> 
+			<class name="testNG.Topic_08_Optional" /> 
+		</classes> 
+	</test>
+
+</suite> 

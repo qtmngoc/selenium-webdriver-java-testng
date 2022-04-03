@@ -64,7 +64,7 @@ public class Topic_08_Dropdown_Custom {
 		
 		// Effects Slide
 		enterToInCustomDropdownList("div#slide-place input", "div#slide-place li", "Porsche");
-		Assert.assertEquals(driver.findElement(By.cssSelector("div#slide-place input")).getAttribute("value"), "Porsche");		
+		Assert.assertEquals(driver.findElement(By.cssSelector("div#slide-place input")).getAttribute("value"), "Porsche");	
 		
 		// HTML support
 		enterToInCustomDropdownList("div#html-place input", "div#html-place li", "Nissan");
@@ -100,7 +100,7 @@ public class Topic_08_Dropdown_Custom {
 	}
 	
 	@Test
-	public void TC_05_Vue() {
+	public void TC_05_Vue_Select() {
 		driver.get("https://mikerodham.github.io/vue-dropdowns/");
 
 		selectItemInCustomDropdownList("li.dropdown-toggle", "ul.dropdown-menu a", "Third Option");
@@ -114,24 +114,24 @@ public class Topic_08_Dropdown_Custom {
 	}
 	
 	@Test
-	public void TC_06_Angular_Select_And_Enter() {
+	public void TC_06_Angular_Enter() {
 		driver.get("https://tiemchungcovid19.gov.vn/portal/register-person");
-
+		
 		// Tỉnh/Thành phố
-		selectItemInCustomDropdownList("ng-select[bindvalue='provinceCode']", "div[role='option']>span.ng-option-label", "Thành phố Hồ Chí Minh");
+		enterToInCustomDropdownList("ng-select[bindvalue='provinceCode'] input", "div[role='option']>span.ng-option-label", "Thành phố Hồ Chí Minh");
 		Assert.assertEquals(driver.findElement(By.cssSelector("ng-select[bindvalue='provinceCode'] span.ng-value-label")).getText(), "Thành phố Hồ Chí Minh");
 		
 		// Quận/Huyện
-		selectItemInCustomDropdownList("ng-select[bindvalue='districtCode']", "div[role='option']>span.ng-option-label", "Thành phố Thủ Đức");
+		enterToInCustomDropdownList("ng-select[bindvalue='districtCode'] input", "div[role='option']>span.ng-option-label", "Thành phố Thủ Đức");
 		String actualDistrict = (String) jsExcutor.executeScript("return document.querySelector(\"ng-select[bindvalue='districtCode'] span.ng-value-label\").innerText");
 		Assert.assertEquals(actualDistrict, "Thành phố Thủ Đức");
 		
 		// Xã/Phường
-		selectItemInCustomDropdownList("ng-select[bindvalue='wardCode']", "div[role='option']>span.ng-option-label", "Phường Trường Thạnh");
+		enterToInCustomDropdownList("ng-select[bindvalue='wardCode'] input", "div[role='option']>span.ng-option-label", "Phường Trường Thạnh");
 		Assert.assertEquals(driver.findElement(By.cssSelector("ng-select[bindvalue='wardCode'] span.ng-value-label")).getAttribute("innerText"), "Phường Trường Thạnh");
 
 		// Dân tộc		
-		selectItemInCustomDropdownList("ng-select[bindvalue='ethnicityCode']", "div[role='option']>span", "Thái");
+		enterToInCustomDropdownList("ng-select[bindvalue='ethnicityCode'] input", "div[role='option']>span", "Thái");
 		Assert.assertEquals(driver.findElement(By.cssSelector("ng-select[bindvalue='ethnicityCode'] span.ng-value-label")).getAttribute("textContent"), "Thái");
 		enterToInCustomDropdownList("ng-select[bindvalue='ethnicityCode'] input", "div[role='option']>span", "Hoa");
 		Assert.assertEquals(driver.findElement(By.cssSelector("ng-select[bindvalue='ethnicityCode'] span.ng-value-label")).getAttribute("textContent"), "Hoa");
@@ -140,8 +140,6 @@ public class Topic_08_Dropdown_Custom {
 		enterToInCustomDropdownList("ng-select[bindvalue='nationCode'] input", "div[role='option']>span", "Hong Kong");
 		String actualNation = (String) jsExcutor.executeScript("return document.querySelector(\"ng-select[bindvalue='nationCode'] span.ng-value-label\").innerHTML");
 		Assert.assertEquals(actualNation, "Hong Kong");
-		selectItemInCustomDropdownList("ng-select[bindvalue='nationCode']", "div[role='option']>span", "Cambodia");
-		Assert.assertEquals(driver.findElement(By.cssSelector("ng-select[bindvalue='nationCode'] span.ng-value-label")).getText(), "Cambodia");
 		
 		// Quan hệ 
 		enterToInCustomDropdownList("ng-select[formcontrolname='guardianRelationshipId'] input", "div[role='option']>span", "Mẹ");
@@ -169,7 +167,7 @@ public class Topic_08_Dropdown_Custom {
 
 				// - Step 4: click vào item
 				item.click();
-				sleepInSecond(1);
+				sleepInMilisecond(300);
 				// Thoát
 				break;
 			}
@@ -197,7 +195,7 @@ public class Topic_08_Dropdown_Custom {
 				
 				// - Step 4: click vào item
 				item.click();
-				sleepInSecond(1);
+				sleepInMilisecond(300);
 				// Thoát
 				break;
 			}
@@ -209,9 +207,9 @@ public class Topic_08_Dropdown_Custom {
 		driver.quit();
 	}
 	
-	public void sleepInSecond(long second) {
+	public void sleepInMilisecond(long milisecond) {
 		try {
-			Thread.sleep(second * 1000);
+			Thread.sleep(milisecond);
 		}
 		catch (InterruptedException e) {
 			e.printStackTrace();
