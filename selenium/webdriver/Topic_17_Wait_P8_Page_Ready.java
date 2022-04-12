@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -82,8 +83,7 @@ public class Topic_17_Wait_P8_Page_Ready {
 		Assert.assertTrue(isPageLoadedSuccess());
 		
 		// Search
-		driver.findElement(By.cssSelector("section#search-2 input.search-field")).sendKeys("Selenium");
-		driver.findElement(By.cssSelector("section#search-2 span.glass")).click();
+		driver.findElement(By.cssSelector("section#search-2 input.search-field")).sendKeys("Selenium" + Keys.ENTER);
 		
 		Assert.assertTrue(isPageLoadedSuccess());
 		
